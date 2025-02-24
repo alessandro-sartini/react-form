@@ -1,4 +1,7 @@
 html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.737);
     color: whitesmoke;
 }
@@ -7,13 +10,38 @@ html{
 
     display: flex;
     color: whitesmoke;
-    flex-direction: column;
     justify-content: center;
-    
+   
 }
 
-ul{
 
+ul{
+    padding: 0;
     list-style-type: none;
 
 }
+li{
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    /* line-height: 3rem; */
+    margin-block: 1rem;
+}
+li>button{
+
+    padding-block: 0.5rem ;
+    padding-inline:0.7rem ;
+
+    background-color: aqua;
+
+}
+li>button:hover{
+
+    display: none;
+}    
+
+form div button{
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+

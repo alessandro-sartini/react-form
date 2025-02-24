@@ -1,5 +1,5 @@
 import { useState } from "react";
-const initialTasks = ['Fare la spesa', 'Pulire casa', 'Fare il bucato'];
+const initialTasks = ['Fare la spesa', 'Pulire casa', 'Fare il bucato', 'vivere'];
 
 const Main = () => {
 
@@ -7,10 +7,10 @@ const Main = () => {
 
     const [newTask, setNewTask] = useState('');
 
-    
+
     const addNewTask = (e) => {
-        
-        e.preventDefault();     
+        e.preventDefault(); 
+        if (newTask.trim() === "") return alert("Nooooo, vuoto nooooo!");
         setArrayTasks([...arrayTasks, newTask]);
         setNewTask(' ');
 
@@ -22,8 +22,6 @@ const Main = () => {
         return setArrayTasks(filteredArray);
 
     }
-
-    
 
     return (
     <>
@@ -48,18 +46,26 @@ const Main = () => {
                     })}     
             </ul>
           
+        </div>
+        <div className="container">
+                
             <form onSubmit={addNewTask}>
                 <input
                     type="text"
-                    placeholder="Inserisci le tue Task!"
+                    placeholder = "Inserisci le tue Task!"
                     onChange={(e) => setNewTask(e.target.value)}
                     value={newTask}
-                />
+                    />
+                    <div className="container">
+
                 <button >Aggiungi il nuovo task</button>
 
+
+                    </div>
+
             </form>
+
         </div>
-    
     </>
 
 

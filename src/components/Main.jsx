@@ -56,12 +56,13 @@ const Main = () => {
                     onChange={(e) => setNewTask(e.target.value)}
                     value={newTask}
                     />
-                    <div className="container">
+                    
+                <div className="container">
 
-                <button >Aggiungi il nuovo task</button>
+                    <button >Aggiungi il nuovo task</button>
 
 
-                    </div>
+                </div>
 
             </form>
 

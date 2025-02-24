@@ -31,16 +31,19 @@ li>button{
 
     padding-block: 0.5rem ;
     padding-inline:0.7rem ;
-
+    border-radius: 0.4rem;
     background-color: aqua;
 
 }
-li>button:hover{
+/* li>button:hover{
 
     display: none;
-}    
+}     */
 
 form div button{
+    border-radius: 0.4rem;
+    background-color: aqua;
+
     margin-top: 1rem;
     padding: 0.5rem;
 }

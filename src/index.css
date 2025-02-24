@@ -1,0 +1,19 @@
+html{
+    background-color: rgba(0, 0, 0, 0.737);
+    color: whitesmoke;
+}
+
+.container{
+
+    display: flex;
+    color: whitesmoke;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+ul{
+
+    list-style-type: none;
+
+}

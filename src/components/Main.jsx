@@ -1,5 +1,5 @@
 import { useState } from "react";
-const initialTasks = ['Fare la spesa', 'Pulire casa', 'Fare il bucato', 'vivere'];
+const initialTasks =['FARE LA SPESA', 'PULIRE CASA', 'FARE IL BUCATO', 'VIVERE'];
 
 const Main = () => {
 
@@ -7,13 +7,25 @@ const Main = () => {
 
     const [newTask, setNewTask] = useState('');
 
+    const [editIndex, setEditIndex] = useState(null);
 
     const addNewTask = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         if (newTask.trim() === "") return alert("Nooooo, vuoto nooooo!");
-        setArrayTasks([...arrayTasks, newTask]);
-        setNewTask(' ');
 
+        if (editIndex !== null) {
+            //! aggiorna il task esistente
+            const updatedTasks = [...arrayTasks];
+            updatedTasks[editIndex] = newTask.toUpperCase();
+            setArrayTasks(updatedTasks);
+            setEditIndex(null);
+            //! Esci dalla modifica
+        } else {
+            //!  aggiungi un nuovo task
+            setArrayTasks([...arrayTasks, newTask.toUpperCase()]);
+        }
+        // Resetta l'input
+        setNewTask('');
     };
 
     const removeTheTask= (indiceEl) => {
@@ -22,30 +34,37 @@ const Main = () => {
         return setArrayTasks(filteredArray);
 
     }
+    const modify = (indiceEl) => {
+        // Carica il task selezionato nell'input e imposta l'indice di modifica
+        setNewTask(arrayTasks[indiceEl]);
+        setEditIndex(indiceEl);
+    };
 
     return (
     <>
-        <div className="container">
+        <div className="container-main">
 
             <ul>
                     {arrayTasks.map((el, idx) => {
                         
                         return (
+                        <>
                             
-                            <li key={idx}>
-                                {el}
-
-
-                                <button onClick={()=> removeTheTask(idx)}>
-                                    X
-                                </button>
-
-                            </li>
+                        <li key={idx}>
+                            <button type="button" onClick={()=> modify(idx)}>
+                                    
+                                &#x270E;
+                                    
+                            </button>
+                                <h2>{el}</h2>
+                            <button onClick={()=> removeTheTask(idx)}>
+                                &#x2716;
+                            </button>
+                        </li>
+                        </>
                         )
-                        
                     })}     
             </ul>
-          
         </div>
         <div className="container">
                 
@@ -56,21 +75,16 @@ const Main = () => {
                     onChange={(e) => setNewTask(e.target.value)}
                     value={newTask}
                     />
-                    
-                <div className="container">
-
-                    <button >Aggiungi il nuovo task</button>
-
-
-                </div>
+                
+                    <button >
+                        {editIndex !== null ? "Modifica Task" : "Aggiungi il nuovo task"}                            
+                    </button>
+               
 
             </form>
 
         </div>
     </>
-
-
     )
 }
-
 export default Main;

@@ -42,30 +42,26 @@ const Main = () => {
 
     return (
     <>
-        <div className="container-main">
-
-            <ul>
-                    {arrayTasks.map((el, idx) => {
-                        
-                        return (
-                        <>
-                            
+        <div className="container">
+            {arrayTasks.length === 0 ? (
+                <h2>Non ci sono task al momento!</h2>
+            ) : (
+                <ul>
+                    {arrayTasks.map((el, idx) => (
                         <li key={idx}>
-                            <button type="button" onClick={()=> modify(idx)}>
-                                    
+                            <button type="button" onClick={() => modify(idx)}>
                                 &#x270E;
-                                    
                             </button>
-                                <h2>{el}</h2>
-                            <button onClick={()=> removeTheTask(idx)}>
+                            <h2>{el}</h2>
+                            <button onClick={() => removeTheTask(idx)}>
                                 &#x2716;
                             </button>
                         </li>
-                        </>
-                        )
-                    })}     
-            </ul>
+                    ))}
+                </ul>
+            )}
         </div>
+
         <div className="container">
                 
             <form onSubmit={addNewTask}>
